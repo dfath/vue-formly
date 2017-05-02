@@ -1,6 +1,6 @@
 <template>
   <fieldset>
-    <formly-field v-for="field in fields" :form.sync="form" :model.sync="model" :field="field"></formly-field>
+    <formly-field v-for="field in fields" :form.sync="form" :model.sync="model" :key="field.key" :field="field"></formly-field>
     <slot></slot>
   </fieldset>
 </template>
@@ -15,7 +15,7 @@
        if ( typeof this.model[ field.key ] == 'undefined' ) this.$set(this.model, field.key, '');
      });
 
-     
+
      //set our validation options
      this.$set(this.form, '$errors', {});
      this.$set(this.form, '$valid', true);
@@ -32,7 +32,7 @@
      }, {
        deep: true
      });
-     
+
    }
  }
 </script>
